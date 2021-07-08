@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 
 namespace HECSFramework.Unity.Helpers
 {
-    public static class SerializeExtentions
+    public static partial class SerializeExtentions
     {
         public static async Task<IActor> GetActorFromResolver(this EntityResolver entityResolver, bool needForceAdd = true, int worldIndex = 0)
         {
@@ -24,6 +24,7 @@ namespace HECSFramework.Unity.Helpers
             var actor = await loadedContainer.GetActor();
             actor.LoadEntityFromResolver(entityResolver, needForceAdd);
 
+            actor.SetGuid(entityResolver.Guid);
             return actor;
         }
     }
