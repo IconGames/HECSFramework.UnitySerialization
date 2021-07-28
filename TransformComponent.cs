@@ -9,8 +9,8 @@ namespace Components
         {
             if (Transform != null)
             {
-                Transform.position = PositionSave.GetVector3();
-                Transform.rotation = UnityEngine.Quaternion.Euler(RotationSave.GetVector3());
+                Transform.position = PositionSave.AsVector();
+                Transform.rotation = UnityEngine.Quaternion.Euler(RotationSave.AsVector());
             }
         }
 

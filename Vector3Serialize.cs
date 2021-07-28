@@ -4,16 +4,21 @@ namespace HECSFramework.Core
 {
     public partial struct Vector3Serialize
     {
-        public Vector3 GetVector3()
+        public Vector3Serialize(Vector3 source)
         {
-            return new Vector3(X, Y, Z);
+            X = source.x;
+            Y = source.y;
+            Z = source.z;
         }
+        
+        public Vector3 AsVector()
+            => new Vector3(X, Y, Z);
 
-        public void SetVector3Serialize(Vector3 xyz)
+        public void SetVector3Serialize(Vector3 source)
         {
-            X = xyz.x;
-            Y = xyz.y;
-            Z = xyz.z;
+            X = source.x;
+            Y = source.y;
+            Z = source.z;
         }
     }
 }
