@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MessagePack;
+using UnityEngine;
 
 namespace HECSFramework.Core
 {
@@ -11,7 +12,8 @@ namespace HECSFramework.Core
             Z = source.z;
         }
         
-        public Vector3 AsVector()
+        [IgnoreMember]
+        public Vector3 AsVector
             => new Vector3(X, Y, Z);
 
         public void SetVector3Serialize(Vector3 source)

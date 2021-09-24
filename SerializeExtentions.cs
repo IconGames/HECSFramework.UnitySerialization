@@ -27,5 +27,22 @@ namespace HECSFramework.Unity.Helpers
             actor.SetGuid(entityResolver.Guid);
             return actor;
         }
+
+        public static EntityResolver GetEntityResolver(this EntityContainer entityContainer)
+        {
+            var unpack = new UnpackContainer(entityContainer);
+            var data = new EntityResolver();
+
+            data.Components = new System.Collections.Generic.List<ResolverDataContainer>();
+            data.Systems = new System.Collections.Generic.List<ResolverDataContainer>();
+
+            foreach (var c in unpack.Components)
+                data.Components.Add(EntityManager.ResolversMap.GetComponentContainer(c));
+
+            foreach (var s in unpack.Systems)
+                data.Systems.Add(EntityManager.ResolversMap.GetSystemContainer(s));
+
+            return data;
+        }
     }
 }

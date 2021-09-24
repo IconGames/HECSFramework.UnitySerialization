@@ -11,6 +11,8 @@ namespace HECSFramework.Core
 {
     public partial class ResolversMap
     {
+        private static bool isMessagePackInited;
+        
         static ResolversMap()
         {
             if (isMessagePackInited)
