@@ -1,4 +1,5 @@
 ﻿using HECSFramework.Core;
+using UnityEngine;
 
 namespace Components
 {
