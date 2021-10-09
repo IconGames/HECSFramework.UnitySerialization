@@ -15,16 +15,6 @@ namespace Components
             }
         }
 
-        partial void OnInitCheckData()
-        {
-            if (PositionSave.AsVector != Vector3.zero || RotationSave.AsVector != Vector3.zero)
-            {
-                SetPosition(PositionSave.AsVector);
-                SetRotation(Quaternion.Euler(RotationSave.AsVector));
-            }
-        }
-
-
         public void BeforeSync()
         {
             if (Transform != null)
