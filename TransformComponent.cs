@@ -11,7 +11,7 @@ namespace Components
             if (Transform != null)
             {
                 Transform.position = PositionSave.AsVector;
-                Transform.rotation = UnityEngine.Quaternion.Euler(RotationSave.AsVector);
+                Transform.rotation = Quaternion.Euler(RotationSave.AsVector);
             }
         }
 
@@ -19,8 +19,14 @@ namespace Components
         {
             if (Transform != null)
             {
-                PositionSave.SetVector3Serialize(Transform.position);
-                RotationSave.SetVector3Serialize(Transform.rotation.eulerAngles);
+                PositionSave = new Vector3Serialize(Transform.position);
+                RotationSave = new Vector3Serialize(Transform.rotation.eulerAngles);
+
+                if (Owner.TryGetHecsComponent(HMasks.SavePositionComponent, out SavePositionComponent savePositionComponent))
+                {
+                    savePositionComponent.Position = PositionSave;
+                    savePositionComponent.Rotation = RotationSave;
+                }
             }
         }
     }
