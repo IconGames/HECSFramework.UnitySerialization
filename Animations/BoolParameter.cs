@@ -5,7 +5,7 @@
         protected override void SetValueToAnimator()
         {
             base.SetValueToAnimator();
-            Animator.SetBool(parameterHashCode, Value);
+            Animator.SetBool(ParameterAnimatorHashCode, Value);
         }
     }
 }

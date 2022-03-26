@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Components
 {
-    [GenerateResolver]
     public partial class TransformComponent : IAfterSerializationComponent, IBeforeSerializationComponent
     {
         public void AfterSync()
