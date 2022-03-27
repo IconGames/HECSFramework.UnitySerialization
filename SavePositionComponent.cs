@@ -15,7 +15,7 @@ namespace Components
 
         public void BeforeSync()
         {
-            if (Owner.TryGetHecsComponent(HMasks.TransformComponent, out TransformComponent transformComponent))
+            if (Owner.TryGetHecsComponent(out TransformComponent transformComponent))
             {
                 transformComponent.BeforeSync();
                 Position = transformComponent.PositionSave;
