@@ -7,18 +7,18 @@ namespace Components
     public sealed partial class AnimatorStateComponent : IHaveActor, IInitable
     {
         public IActor Actor { get; set; }
-        private Animator animator;
+        public Animator Animator;
 
         public void Init()
         {
-            Actor.TryGetComponent(out animator, true);
-            State = AnimatorManager.GetAnimatorState(animator.runtimeAnimatorController.name);
-            State.SetAnimator(animator);
+            Actor.TryGetComponent(out Animator, true);
+            State = AnimatorManager.GetAnimatorState(Animator.runtimeAnimatorController.name);
+            State.SetAnimator(Animator);
         }
 
         public void SetTrigger(int id)
         {
-            animator.SetTrigger(id);
+            Animator.SetTrigger(id);
         }
     }
 }
