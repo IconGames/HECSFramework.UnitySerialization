@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using HECSFramework.Serialize;
 
 namespace HECSFramework.Unity

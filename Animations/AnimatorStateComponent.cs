@@ -12,7 +12,12 @@ namespace Components
         public void Init()
         {
             Actor.TryGetComponent(out Animator, true);
-            State = AnimatorManager.GetAnimatorState(Animator.runtimeAnimatorController.name);
+
+            if (Animator != null && Animator.runtimeAnimatorController is AnimatorOverrideController overrideController)
+                State = AnimatorManager.GetAnimatorState(overrideController.runtimeAnimatorController.name);
+            else
+                State = AnimatorManager.GetAnimatorState(Animator.runtimeAnimatorController.name);
+
             State.SetAnimator(Animator);
         }
 
