@@ -9,7 +9,9 @@ namespace Components
         {
             Position = PositionSave.AsVector;
             Rotation = Quaternion.Euler(RotationSave.AsVector);
+            Interpolate();
         }
+        partial void Interpolate();
 
         public void BeforeSync()
         {

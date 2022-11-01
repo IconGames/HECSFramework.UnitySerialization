@@ -1,4 +1,5 @@
-﻿using Components;
+﻿using System;
+using Components;
 using HECSFramework.Unity;
 using MessagePack.Resolvers;
 using MessagePack;
@@ -34,6 +35,18 @@ namespace HECSFramework.Core
 
             entity.SetGuid(entityResolver.Guid);
             return entity;
+        }
+        
+        public T DeserializeScriptableObject<T>(byte[] data)
+        {
+            var span = new ReadOnlySpan<byte>(data, 0, 4);
+
+            var intKey = BitConverter.ToInt32(span);
+
+            if (typeCodeToCustomResolver.TryGetValue(intKey, out var resolver))
+                return resolver.DeserializeScriptableObject<T>(data);
+
+            throw new Exception($"we dont have needed resolver for {intKey}, mby u forgot run codogen?");
         }
     }
 }
