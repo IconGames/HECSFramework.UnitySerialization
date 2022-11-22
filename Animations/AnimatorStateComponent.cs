@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Components
 {
-    public sealed partial class AnimatorStateComponent : IHaveActor, IInitable
+    public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAferView
     {
         public IActor Actor { get; set; }
         public Animator Animator;
@@ -34,6 +34,11 @@ namespace Components
         public void SetTrigger(int id)
         {
             Animator.SetTrigger(id);
+        }
+
+        public void InitAferView()
+        {
+            SetupAnimatorState();
         }
     }
 }
