@@ -33,7 +33,7 @@ namespace HECSFramework.Unity
                 }
             }
 
-            HECSDebug.LogWarning("нет файла сохранения");
+            HECSDebug.Log("нет файла сохранения");
             entityResolver = default;
             return false;
         }
