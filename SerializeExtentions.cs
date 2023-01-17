@@ -9,22 +9,9 @@ namespace HECSFramework.Unity.Helpers
 {
     public static partial class SerializeExtentions
     {
-        public static async Task<IActor> GetActorFromResolver(this EntityResolver entityResolver, bool needForceAdd = true, int worldIndex = 0)
+        public static async ValueTask<IActor> GetActorFromResolver(this EntityResolver entityResolver, bool needForceAdd = true, int worldIndex = 0)
         {
-            var unpack = new UnPackEntityResolver(entityResolver);
-            var actorID = unpack.Components.FirstOrDefault(x => x is ActorContainerID containerID);
-
-            if (actorID == null)
-                return null;
-
-            var container = actorID as ActorContainerID;
-
-            var loaded = await Addressables.LoadAssetAsync<ScriptableObject>(container.ID).Task;
-            var loadedContainer = loaded as EntityContainer;
-            var actor = await loadedContainer.GetActor();
-            actor.LoadEntityFromResolver(entityResolver, needForceAdd);
-
-            actor.SetGuid(entityResolver.Guid);
+            var actor  = await entityResolver.GetActorFromResolver(worldIndex: worldIndex);
             return actor;
         }
 

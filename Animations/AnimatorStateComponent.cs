@@ -9,11 +9,9 @@ namespace Components
         public IActor Actor { get; set; }
         public Animator Animator;
 
-        private HECSMask setupAfterViewTagComponentMask = HMasks.GetMask<SetupAfterViewTagComponent>();
-
         public void Init()
         {
-            if (Owner.ContainsMask(ref setupAfterViewTagComponentMask))
+            if (Owner.ContainsMask<SetupAfterViewTagComponent>())
                 return;
 
             SetupAnimatorState();

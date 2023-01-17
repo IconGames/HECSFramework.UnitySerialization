@@ -1,8 +1,7 @@
-﻿using Components;
-using HECSFramework.Core;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using UnityEngine;
+using Components;
+using HECSFramework.Core;
 using UnityEngine.AddressableAssets;
 
 namespace HECSFramework.Unity
@@ -16,14 +15,10 @@ namespace HECSFramework.Unity
 
             var save = new EntityResolver().GetEntityResolver(entity);
 
-            if (entity.TryGetHecsComponent(out ActorContainerID container))
+            if (entity.TryGetComponent(out ActorContainerID container))
             {
-                var actorContainer = await Addressables.LoadAssetAsync<ScriptableObject>(container.ID).Task;
-                var data = entity.GetHECSComponent<ViewReferenceComponent>().ViewReference.InstantiateAsync();
-                var actorPrfb = await data.Task;
-                (actorContainer as EntityContainer).Init(actorPrfb);
-                await actorPrfb.LoadEntityFromResolver(save);
-                Addressables.Release(data);
+                var actorContainer = await Addressables.LoadAssetAsync<EntityContainer>(container.ID).Task;
+                var actorPrfb = await actorContainer.GetActor();
                 callBack?.Invoke(actorPrfb);
                 return actorPrfb;
             }
