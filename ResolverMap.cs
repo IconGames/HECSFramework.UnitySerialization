@@ -12,7 +12,7 @@ namespace HECSFramework.Core
 {
     public partial class ResolversMap
     {
-        public async Task<IEntity> GetEntityFromResolver(EntityResolver entityResolver, bool needInitFromContainer, bool needForceAdd = false, int worldIndex = 0)
+        public async Task<Entity> GetEntityFromResolver(EntityResolver entityResolver, bool needInitFromContainer, bool needForceAdd = false, int worldIndex = 0)
         {
             var unpack = new UnPackEntityResolver(entityResolver);
             var actorID = unpack.Components.FirstOrDefault(x => x is ActorContainerID containerID);
@@ -22,7 +22,7 @@ namespace HECSFramework.Core
 
             var container = actorID as ActorContainerID;
 
-            IEntity entity;
+            Entity entity;
             entity = new Entity(EntityManager.Worlds.Data[worldIndex], (actorID as ActorContainerID).ID);
 
             if (needInitFromContainer)
