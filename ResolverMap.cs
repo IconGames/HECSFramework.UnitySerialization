@@ -23,7 +23,7 @@ namespace HECSFramework.Core
             var container = actorID as ActorContainerID;
 
             Entity entity;
-            entity = new Entity(EntityManager.Worlds.Data[worldIndex], (actorID as ActorContainerID).ID);
+            entity = new Entity(EntityManager.Worlds[worldIndex], (actorID as ActorContainerID).ID);
 
             if (needInitFromContainer)
             {
