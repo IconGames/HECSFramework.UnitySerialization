@@ -6,7 +6,7 @@ namespace Components
 {
     public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAferView
     {
-        public IActor Actor { get; set; }
+        public Actor Actor { get; set; }
         public Animator Animator;
 
         public void Init()

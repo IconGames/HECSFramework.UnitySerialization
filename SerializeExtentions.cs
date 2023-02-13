@@ -1,15 +1,11 @@
-﻿using Components;
+﻿using System.Threading.Tasks;
 using HECSFramework.Core;
-using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace HECSFramework.Unity.Helpers
 {
     public static partial class SerializeExtentions
     {
-        public static async ValueTask<IActor> GetActorFromResolver(this EntityResolver entityResolver, bool needForceAdd = true, int worldIndex = 0)
+        public static async ValueTask<Actor> GetActorFromResolver(this EntityResolver entityResolver, bool needForceAdd = true, int worldIndex = 0)
         {
             var actor  = await entityResolver.GetActorFromResolver(worldIndex: worldIndex);
             return actor;

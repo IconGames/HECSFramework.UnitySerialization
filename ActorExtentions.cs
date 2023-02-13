@@ -8,7 +8,7 @@ namespace HECSFramework.Unity
 {
     public static partial class ActorExtentions
     {
-        public static async Task<IActor> GetActor(this Entity entity, Action<IActor> callBack = null)
+        public static async Task<Actor> GetActor(this Entity entity, Action<Actor> callBack = null)
         {
             if (entity == null)
                 throw new Exception("entity == null");
