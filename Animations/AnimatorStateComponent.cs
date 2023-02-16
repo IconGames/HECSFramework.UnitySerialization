@@ -11,7 +11,7 @@ namespace Components
 
         public void Init()
         {
-            if (Owner.ContainsMask<SetupAfterViewTagComponent>())
+            if (Owner.ContainsMask<ViewReferenceGameObjectComponent>())
                 return;
 
             SetupAnimatorState();
