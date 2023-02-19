@@ -1,13 +1,15 @@
-﻿using HECSFramework.Core;
+﻿using System;
+using HECSFramework.Core;
 using HECSFramework.Unity;
 using UnityEngine;
 
 namespace Components
 {
-    public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAferView
+    public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAferView, IDisposable
     {
         public Actor Actor { get; set; }
         public Animator Animator;
+        public bool Activated;
 
         public void Init()
         {
@@ -27,6 +29,7 @@ namespace Components
                 State = AnimatorManager.GetAnimatorState(Animator.runtimeAnimatorController.name);
 
             State.SetAnimator(Animator);
+            Activated = true;
         }
 
         public void SetTrigger(int id)
@@ -37,6 +40,11 @@ namespace Components
         public void InitAferView()
         {
             SetupAnimatorState();
+        }
+
+        public void Dispose()
+        {
+            Activated = false;
         }
     }
 }
