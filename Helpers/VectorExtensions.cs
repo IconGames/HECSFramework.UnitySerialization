@@ -1,5 +1,5 @@
-﻿using HECSFramework.Core;
-using UnityEngine;
+﻿using System.Numerics;
+using HECSFramework.Core;
 
 namespace Helpers
 {
