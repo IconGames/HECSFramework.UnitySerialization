@@ -19,5 +19,21 @@ namespace HECSFramework.Serialize
                 anim.Value.Animator = animator;
             }
         }
+
+        public void ApplyParametersToAnimator()
+        {
+            foreach (var parameter in boolParameters.Values)
+            {
+                parameter.Animator.SetBool(parameter.ParameterAnimatorHashCode, parameter.Value);
+            }
+            foreach (var parameter in floatParameters.Values)
+            {
+                parameter.Animator.SetFloat(parameter.ParameterAnimatorHashCode, parameter.Value);
+            }
+            foreach (var parameter in intParameters.Values)
+            {
+                parameter.Animator.SetInteger(parameter.ParameterAnimatorHashCode, parameter.Value);
+            }
+        }
     }
 }
