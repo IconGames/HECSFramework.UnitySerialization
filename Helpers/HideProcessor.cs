@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using HECSFramework.Core;
+using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEngine;
 
@@ -19,6 +20,20 @@ namespace Helpers
             if (custom != null && custom.Count() > 0)
             {
                 attributes.Add(new HideInInspector());
+            }
+        }
+    }
+
+    public class ReadOnlyProcessor<T> : OdinAttributeProcessor<T> where T : IComponent
+    {
+        public override void ProcessChildMemberAttributes(InspectorProperty parentProperty, MemberInfo member, List<Attribute> attributes)
+        {
+            base.ProcessChildMemberAttributes(parentProperty, member, attributes);
+            var custom = member.GetCustomAttributes<ReadOnlyCrossPlatform>();
+
+            if (custom != null && custom.Count() > 0)
+            {
+                attributes.Add(new ReadOnlyAttribute());
             }
         }
     }
