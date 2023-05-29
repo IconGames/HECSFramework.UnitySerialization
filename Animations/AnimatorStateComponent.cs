@@ -42,9 +42,15 @@ namespace Components
             SetupAnimatorState();
         }
 
-        public void Dispose()
+        public void Reset()
         {
             Activated = false;
+            Animator = null;
+        }
+
+        public void Dispose()
+        {
+            Reset();
         }
     }
 }
