@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Components
 {
-    public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAferView, IDisposable
+    public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAfterView, IDisposable
     {
         public Actor Actor { get; set; }
         public Animator Animator;
