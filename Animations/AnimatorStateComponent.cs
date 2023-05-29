@@ -8,7 +8,9 @@ namespace Components
     public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAferView, IDisposable
     {
         public Actor Actor { get; set; }
+        [HideInInspectorCrossPlatform]
         public Animator Animator;
+        [HideInInspectorCrossPlatform]
         public bool Activated;
 
         public void Init()
