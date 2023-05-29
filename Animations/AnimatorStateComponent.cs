@@ -8,7 +8,9 @@ namespace Components
     public sealed partial class AnimatorStateComponent : IHaveActor, IInitable, IInitAfterView, IDisposable
     {
         public Actor Actor { get; set; }
+        [HideInInspectorCrossPlatform]
         public Animator Animator;
+        [HideInInspectorCrossPlatform]
         public bool Activated;
 
         public void Init()
@@ -42,9 +44,15 @@ namespace Components
             SetupAnimatorState();
         }
 
-        public void Dispose()
+        public void Reset()
         {
             Activated = false;
+            Animator = null;
+        }
+
+        public void Dispose()
+        {
+            Reset();
         }
     }
 }
