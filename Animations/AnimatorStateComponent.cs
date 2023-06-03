@@ -39,7 +39,7 @@ namespace Components
             Animator.SetTrigger(id);
         }
 
-        public void InitAferView()
+        public void InitAfterView()
         {
             SetupAnimatorState();
         }
