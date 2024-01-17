@@ -7,7 +7,7 @@ namespace HECSFramework.Serialize
         protected override void SetValueToAnimator()
         {
             base.SetValueToAnimator();
-            Animator.SetFloat(ParameterAnimatorHashCode, Value);
+            Animator.SetFloat(ParameterAnimatorHashCode, Value, DampTime, DeltaTime);
         }
     }
 }
