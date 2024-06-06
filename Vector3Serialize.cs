@@ -1,4 +1,5 @@
 ﻿using MessagePack;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace HECSFramework.Core
@@ -13,6 +14,7 @@ namespace HECSFramework.Core
         }
         
         [IgnoreMember]
+        [JsonIgnore]
         public Vector3 AsVector
             => new Vector3(X, Y, Z);
 
